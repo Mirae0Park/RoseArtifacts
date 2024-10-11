@@ -1,0 +1,421 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: "Cormorant Upright", serif;
+  background-image: url("/image/goods_list_0.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: #fff;
+  cursor: none;
+}
+
+/* 브랜드명 스타일 */
+.navbar-brand {
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  top: 0px;
+  left: 0;
+  padding-top: 20px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  z-index: 10000;
+  text-align: center;
+}
+
+.navbar-brand img {
+  width: 250px;
+}
+
+/* Sidebar categories */
+.sidebar {
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  z-index: 100000;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  z-index: 1000000;
+}
+
+.sidebar li {
+  margin: 0 10px;
+  font-size: 18px;
+}
+
+.sidebar li:hover {
+  color: olive;
+  background-color: transparent;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.all-category {
+  position: fixed;
+  top: 170px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  z-index: 1000000;
+}
+
+.all-category li {
+  font-size: 22px; /* ALL의 글자 크기 */
+  margin-bottom: 20px; /* 아래 카테고리들과의 간격 */
+  list-style: none;
+  display: block;
+}
+
+.all-category li:hover {
+  color: olive;
+  transition: color 0.3s ease;
+}
+
+/* 햄버거 메뉴 아이콘 스타일 */
+.hamburger-menu {
+  display: none;
+  font-size: 30px;
+  color: white;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+/* 네비게이션 메뉴 */
+.navbar-menu {
+  width: 100%;
+  list-style-type: none;
+  display: flex;
+  align-items: flex-end;
+  right: 20px;
+  z-index: 100000;
+  position: absolute;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.navbar-menu li {
+  padding: 1rem;
+}
+
+.navbar-menu li a {
+  color: white;
+  text-decoration: none;
+  font-family: "Cormorant Upright", serif;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 8px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  outline: none;
+      cursor: none;
+}
+
+.navbar-menu li a:hover {
+  color: olive;
+  background-color: transparent;
+  /* 배경색을 투명하게 설정 */
+}
+
+/* Carousel */
+.carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  padding-bottom: 80px;
+}
+
+.carousel {
+  position: relative;
+  width: 80%;
+  height: 230px;
+  display: flex;
+  white-space: nowrap;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item a {
+  text-decoration: none; /* 밑줄 제거 */
+  color: inherit; /* 상속된 색상을 사용, 기본 파란색을 없앰 */
+}
+
+.carousel-item a:hover {
+  color: olive; /* 마우스를 올렸을 때 다른 색상 지정 가능 (예: olive) */
+  cursor: none;
+}
+
+.carousel-track {
+  display: inline-block;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+  position: relative;
+  display: inline-block;
+  width: 270px;
+  height: 330px;
+  margin: 0 50px;
+  color: white;
+  text-align: center;
+  flex-direction: column;
+}
+
+.frame-image {
+  position: absolute;
+  top: -220px;
+  left: -242px;
+  height: 225%;
+  object-fit: cover;
+  z-index: 2;
+}
+
+.product-image {
+  width: 71%;
+  height: 71%;
+  object-fit: cover;
+  position: absolute;
+  z-index: 1;
+  top: 48px;
+  left: 50px;
+}
+
+.carousel-item h3 {
+  margin: 350px 0 5px;
+  font-size: 18px;
+}
+
+.carousel-item p {
+  margin: 0;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.curtain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  /* 커튼이 클릭이나 마우스 이벤트에 영향을 주지 않도록 */
+  display: flex;
+  justify-content: space-between;
+  z-index: 100;
+}
+
+.curtain-left {
+  width: 100%;
+  height: 100%;
+  background-position: left;
+  background-size: cover;
+  background-image: url('/image/curtain_left.png');
+}
+
+.curtain-right {
+  width: 100%;
+  height: 100%;
+  background-position: right;
+  background-size: cover;
+  background-image: url('/image/curtain_right.png');
+}
+
+.box {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  /* 클릭 이벤트 방지 */
+  z-index: 10000;
+}
+
+.box img {
+  width: 50px;
+}
+
+/* 반응형 디자인: 화면이 좁아졌을 때 메뉴가 숨기고 햄버거 메뉴가 나타남 */
+@media (max-width: 768px) {
+
+  /* 햄버거 메뉴 활성화 */
+  .hamburger-menu {
+    display: block;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    z-index: 100001;
+    transition: color 0.3s ease;
+  }
+
+  .hamburger-menu:hover {
+    color: #ccc;
+    cursor: none;
+    /* 아이콘에 살짝 변화를 줘서 더 세련된 느낌 */
+  }
+
+  /* 햄버거 메뉴 아이콘 애니메이션 */
+  .hamburger-menu.active {
+    transform: scale(0.9);
+    transition: transform 0.2s ease;
+  }
+
+  .hamburger-menu:active {
+    transform: scale(0.85);
+    /* 클릭할 때 조금 더 작아지는 효과 */
+  }
+
+  /* 네비게이션 메뉴 */
+  .navbar-menu {
+    list-style-type: none;
+    position: absolute;
+    top: 60px;
+    right: -300px;
+    /* 처음에는 화면 밖에 배치 */
+    /* width: 200px;
+          background-color: rgba(0, 0, 0, 0.8);
+          border-radius: 10px;*/
+    padding: 10px;
+    opacity: 0;
+    transition: all 0.5s ease;
+    z-index: 1000;
+    flex-direction: column;
+  }
+
+  /* 햄버거 메뉴 클릭 시 메뉴 보이기 */
+  .navbar-menu.show {
+    right: 20px;
+    /* 슬라이드 인 */
+    opacity: 1;
+    /* 페이드 인 */
+    z-index: 10000;
+  }
+
+  .navbar-menu li {
+    margin: 20px 0;
+    padding: 0;
+    text-align: right;
+  }
+
+  .navbar-menu li a {
+    color: white;
+    text-decoration: none;
+    font-family: "Cormorant Upright", serif;
+    font-size: 18px;
+    transition: color 0.3s ease;
+    cursor: none;
+  }
+
+  .navbar-menu li a:hover {
+    color: #ccc;
+  }
+
+  .navbar-brand {
+    position: absolute;
+    top: 0%;
+  }
+
+  .header {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    top: 300px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 10px 70px 10px;
+    z-index: 1000000;
+  }
+
+  .sidebar ul {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .sidebar li {
+    margin: 0 10px;
+    font-size: 16px;
+  }
+
+  .hamburger {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .frame-image {
+    position: absolute;
+    top: -195px;
+    left: -215px;
+    height: 220%;
+    object-fit: cover;
+    z-index: 2;
+  }
+
+  .product-image {
+    width: 70%;
+    height: 70%;
+    object-fit: cover;
+    position: absolute;
+    z-index: 1;
+    top: 44px;
+    left: 45px;
+  }
+
+  .carousel-item {
+    position: relative;
+    display: inline-block;
+    width: 240px;
+    height: 300px;
+    margin: 0 50px;
+    color: white;
+    text-align: center;
+  }
+
+  .carousel {
+    position: relative;
+    width: 80%;
+    height: 300px;
+    display: flex;
+    white-space: nowrap;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .carousel-item h3 {
+    margin: 330px 0 5px;
+    font-size: 18px;
+  }
+
+  .all-category {
+    top: 220px;
+  }
+}
+
+@media (max-width: 1000px) {
+    .curtain {
+        display: none;
+    }
+}
