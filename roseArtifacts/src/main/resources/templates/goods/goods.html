@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/goods.css"/>
+    <script type="text/javascript" src="/js/goods.js" defer></script>
+</head>
+
+<body>
+
+<!-- Header with brand name and hamburger menu -->
+<div class="header">
+    <div class="all-category">
+        <li onclick="searchByCategory(' ')">ALL</li>
+    </div>
+    <div class="sidebar">
+        <ul>
+            <li onclick="searchByCategory('Post')">Post Card & Poster</li>
+            <li onclick="searchByCategory('Sticker')">Sticker</li>
+            <li onclick="searchByCategory('Phrase')">Phrase</li>
+            <li onclick="searchByCategory('Accessory')">Accessory</li>
+        </ul>
+    </div>
+
+    <nav class="navbar">
+        <div class="hamburger-menu">
+            &#9776; <!-- 햄버거 아이콘 -->
+        </div>
+        <div class="navbar-brand">
+            <a href="/">
+                <img src="/image/logo.png" alt="Logo">
+            </a>
+        </div>
+        <ul class="navbar-menu">
+            <li><a th:href="@{/aboutUs}">About Us</a></li>
+            <li><a th:href="@{/goods/list}">Goods</a></li>
+            <li><a th:href="@{/contact}">Contact</a></li>
+            <li><a th:href="#" sec:authorize="isAuthenticated()">Management</a></li>
+            <li></li>
+        </ul>
+    </nav>
+</div>
+
+<!-- Carousel -->
+<div class="carousel-container">
+    <div class="carousel">
+        <div class="carousel-track" id="carousel-track">
+            <th:block th:each="goods : ${goods}">
+                <div class="carousel-item" th:classappend="${' ' + goods.cate}">
+                    <a th:href="@{/goods/detail/} + ${goods.id}">
+
+                        <img src="/image/frame_01.png" alt="Frame" class="frame-image" loading="lazy">
+                        <img th:src="${goods.imgUrl}" alt="Product 1" class="product-image" loading="lazy">
+
+                        <h3>[[${goods.name}]]</h3>
+                        <p th:if="${goods.status == T(com.roseArtifacts.constant.GoodsSellStatus).SELL}">
+                            [[${#numbers.formatInteger(goods.price, 3, 'COMMA')}]] 원
+                        </p>
+                    </a>
+                </div>
+            </th:block>
+        </div>
+    </div>
+</div>
+
+<div class="box">
+    <img src="/image/mouse_cursor.png">
+</div>
+
+<div class="curtain">
+    <div class="curtain-left"></div>
+    <div class="curtain-right"></div>
+</div>
+
+<form action="/goods/list" method="get">
+    <div class="section-form-input">
+        <div class="div-placeholder">
+            <input type="hidden" id="nameInput" name="name">
+        </div>
+    </div>
+</form>
+
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail Page</title>
+    <link rel="stylesheet" href="/css/goodsDetail.css">
+    <script type="text/javascript" src="/js/goodsDetail.js" defer></script>
+</head>
+
+<body>
+
+    <div class="header">
+        <nav class="navbar">
+            <div class="hamburger-menu">
+                &#9776; <!-- 햄버거 아이콘 -->
+            </div>
+            <div class="navbar-brand">
+                <a href="/">
+                    <img src="/image/logo.png" alt="Logo">
+                </a>
+            </div>
+            <ul class="navbar-menu">
+                <li><a th:href="@{/aboutUs}">About Us</a></li>
+                <li><a th:href="@{/goods/list}">Goods</a></li>
+                <li><a th:href="@{/contact}">Contact</a></li>
+                <li><a th:href="#" sec:authorize="isAuthenticated()">Management</a></li>
+                <li></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="product-detail">
+        <!-- 이미지 슬라이더 -->
+        <img src="/image/frame_02.png" alt="Frame Image" class="frame-img">
+        <div class="product-slider">
+            <div class="slides">
+                <img th:src="${goods.goodsImgDtoList[0].imgurl}" alt="Product Image 1" class="product-img">
+                <img th:if="${goods.goodsImgDtoList != null and goods.goodsImgDtoList.size() > 1 and goods.goodsImgDtoList[1] != null}"
+                     th:src="${goods.goodsImgDtoList[1].imgurl}" alt="Product Image 2" class="product-img">
+                <img th:if="${goods.goodsImgDtoList != null and goods.goodsImgDtoList.size() > 2 and goods.goodsImgDtoList[2] != null}"
+                     th:src="${goods.goodsImgDtoList[2].imgurl}" alt="Product Image 3" class="product-img">
+                <img th:if="${goods.goodsImgDtoList != null and goods.goodsImgDtoList.size() > 3 and goods.goodsImgDtoList[3] != null}"
+                     th:src="${goods.goodsImgDtoList[3].imgurl}" alt="Product Image 4" class="product-img">
+                <img th:if="${goods.goodsImgDtoList != null and goods.goodsImgDtoList.size() > 4 and goods.goodsImgDtoList[4] != null}"
+                     th:src="${goods.goodsImgDtoList[4].imgurl}" alt="Product Image 4" class="product-img">
+            </div>
+            <!-- </div> -->
+            <button class="slider-btn prev-btn" onclick="prevSlide()">&#10094;</button>
+            <button class="slider-btn next-btn" onclick="nextSlide()">&#10095;</button>
+        </div>
+
+        <!-- 상품 정보 -->
+        <div class="product-info">
+            <h1 class="product-name">[[${goods.name}]]</h1>
+            <p class="product-price" th:id="price" data-th-text="|￦ ${#numbers.formatInteger(goods.price, 3, 'COMMA')}  |"></p>
+        </div>
+
+        <!-- 상품 설명 -->
+        <div class="product-description">
+            <h2>Product Description</h2>
+            <p th:utext="${#strings.replace(goods.description, 'size', '<br/><br/>size')}"></p>
+        </div>
+    </div>
+</body>
+
+</html>
