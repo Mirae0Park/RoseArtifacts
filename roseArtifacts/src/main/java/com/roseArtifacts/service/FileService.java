@@ -61,7 +61,6 @@ public class FileService {
         return thumbnailFilename;
     }
 
-
     public void deleteFile(String filePath) throws Exception {
         File deleteFile = new File(filePath);
 
@@ -70,16 +69,6 @@ public class FileService {
             log.info("파일을 삭제하였습니다.");
         } else {
             log.info("파일이 존재하지 않습니다.");
-        }
-    }
-
-    public File convertToWebpWithLossless(String fileName, File originalFile) throws Exception {
-        try {
-            return ImmutableImage.loader()// 라이브러리 객체 생성
-                    .fromFile(originalFile) // .jpg or .png File 가져옴
-                    .output(WebpWriter.DEFAULT.withLossless(), new File(fileName + ".webp")); // 무손실 압축 설정, fileName.webp로 파일 생성
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
         }
     }
 
