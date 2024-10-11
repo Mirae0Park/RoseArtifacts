@@ -47,7 +47,7 @@ out/
 *.jar
 
 # Spring Boot 민감 정보 파일
-application-roseArtifacts.properties
+application-rose.properties
 application.yml
 .env
 *.db
