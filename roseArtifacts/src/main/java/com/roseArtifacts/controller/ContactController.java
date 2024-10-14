@@ -17,7 +17,7 @@ public class ContactController {
 
     @GetMapping("/contact")
     public String sendMail() {
-        return "/contact";
+        return "contact";
     }
 
     @PostMapping("/contact")
