@@ -47,8 +47,15 @@ public class GoodsImgService {
 
         // 상품 이미지 정보 저장
         goodsImg.updateItemImg(oriImgName, imgName, imgUrl);
-        goodsImgRepository.save(goodsImg);
+        log.info("goodsImg.updateItemImg : " + oriImgName + imgName + imgUrl);
 
+        try {
+            goodsImgRepository.save(goodsImg);
+            log.info("Successfully saved goods image to DB.");
+        } catch (Exception e) {
+            log.error("Error saving goods image to DB", e);
+            throw e;  // 실제로 발생한 예외를 다시 던져서 로그 확인
+        }
     }
 
     public void updateGoodsImg(Long goodsImgId, MultipartFile goodsImgFile) throws Exception{

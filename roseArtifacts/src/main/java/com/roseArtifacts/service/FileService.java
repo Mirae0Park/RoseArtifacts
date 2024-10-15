@@ -28,67 +28,46 @@ public class FileService {
 
     public String uploadFile(String uploadPath, String originalFileName, byte[] fileData) throws Exception {
         UUID uuid = UUID.randomUUID(); // 서로 다른 개체들을 구별하기 위해서 이름을 부여할 때 사용
-
-//        String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
         String savedFileName = uuid.toString() + ".webp";
         String fileUploadFullUrl = uploadPath + "/" + savedFileName;
 
-//        FileOutputStream fos = null;
-//        try {
-//            fos = new FileOutputStream(fileUploadFullUrl);
-//            fos.write(fileData);
-//            fos.close();
-//            log.info("File saved successfully: " + fileUploadFullUrl);
-//        } catch (IOException e) {
-//            log.error("File save failed: " + e.getMessage());
-//            throw new Exception("파일 저장 중 오류가 발생했습니다.");
-//        }
+        BufferedImage originalImage;
 
-        BufferedImage originalImage = ImageIO.read(new ByteArrayInputStream(fileData));
+        try {
+            originalImage = ImageIO.read(new ByteArrayInputStream(fileData));
+            log.info("Image successfully loaded from byte array.");
+        } catch (IOException e) {
+            log.error("Failed to load image from byte array", e);
+            throw e;
+        }
 
         // WebP로 저장
         File webpFile = new File(fileUploadFullUrl);
-        ImageWriter writer = ImageIO.getImageWritersByMIMEType("image/webp").next();
-        writer.setOutput(new FileImageOutputStream(webpFile));
+        try {
+            ImageWriter writer = ImageIO.getImageWritersByMIMEType("image/webp").next();
+            writer.setOutput(new FileImageOutputStream(webpFile));
 
-        WebPWriteParam writeParam = new WebPWriteParam(writer.getLocale());
-        writeParam.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
-        writeParam.setCompressionType(String.valueOf(WebPWriteParam.LOSSY_COMPRESSION)); // Lossless compression
-        writeParam.setCompressionQuality(0.8f);
+            WebPWriteParam writeParam = new WebPWriteParam(writer.getLocale());
+            writeParam.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+            writeParam.setCompressionType(writeParam.getCompressionTypes()[WebPWriteParam.LOSSY_COMPRESSION]);
+            writeParam.setCompressionQuality(0.8f);
 
-        writer.write(null, new IIOImage(originalImage, null, null), writeParam);
-        writer.dispose();
+            writer.write(null, new IIOImage(originalImage, null, null), writeParam);
+            writer.dispose();
+
+            log.info("Image successfully saved as WebP at: " + fileUploadFullUrl);
+        } catch (Exception e) {
+            log.error("Failed to save image as WebP", e);
+            throw e;
+        }
 
         return savedFileName;
     }
-
-//    public String saveThumbnail(String uploadPath, String originalFileName, byte[] fileData) throws Exception {
-//
-//        UUID uuid = UUID.randomUUID(); // 서로 다른 개체들을 구별하기 위해서 이름을 부여할 때 사용
-//
-//        String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
-//        String thumbnailFilename = uuid.toString() + extension; // UUID로 받은 값과 원래 파일이름의 확장자를 조합해서 저장될 파일 이름을 만듦
-//        String fileUploadFullUrl = uploadPath + "/" + thumbnailFilename;
-//
-//        // 원본 이미지 로드
-//        BufferedImage originalImage = ImageIO.read(new ByteArrayInputStream(fileData));
-//
-//        // 원본 크기로 이미지를 그대로 저장 (크기 조정하지 않음)
-//        try (FileOutputStream fos = new FileOutputStream(fileUploadFullUrl)) {
-//            ImageIO.write(originalImage, extension.substring(1), fos); // 확장자에 맞춰서 파일 저장
-//        }
-//
-//        return thumbnailFilename;
-//    }
 
     public String saveThumbnail(String uploadPath, String originalFileName, byte[] fileData) throws Exception {
         UUID uuid = UUID.randomUUID(); // 서로 다른 개체들을 구별하기 위해 이름을 부여함
         String savedFileName = uuid.toString() + ".webp"; // WebP 확장자로 저장될 파일 이름을 생성
         String fileUploadFullUrl = uploadPath + "/" + savedFileName;
-
-        log.info("Saving thumbnail. Original file name: " + originalFileName);
-        log.info("Generated file name: " + savedFileName);
-        log.info("File upload path: " + fileUploadFullUrl);
 
         BufferedImage originalImage;
         try {
