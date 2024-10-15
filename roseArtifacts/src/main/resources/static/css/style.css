@@ -201,23 +201,23 @@ section.mainPage .imageWrap .parallaxImage {
 }
 
 section.mainPage .imageWrap .parallaxImage:nth-child(1) {
-  background-image: url(/image/main_0.png);
+  background-image: url(/image/main_0.webp);
 }
 
 section.mainPage .imageWrap .parallaxImage:nth-child(2) {
-  background-image: url(/image/main_1.png);
+  background-image: url(/image/main_1.webp);
 }
 
 section.mainPage .imageWrap .parallaxImage:nth-child(3) {
-  background-image: url(/image/main_2.png);
+  background-image: url(/image/main_2.webp);
 }
 
 section.mainPage .imageWrap .parallaxImage:nth-child(4) {
-  background-image: url(/image/main_3.png);
+  background-image: url(/image/main_3.webp);
 }
 
 section.mainPage .imageWrap .parallaxImage:nth-child(5) {
-  background-image: url(/image/main_4.png);
+  background-image: url(/image/main_4.webp);
 }
 
 

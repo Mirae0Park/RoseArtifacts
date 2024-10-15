@@ -57,5 +57,6 @@ dependencies {
 	implementation "com.sksamuel.scrimage:scrimage-core:4.0.32"
 	implementation "com.sksamuel.scrimage:scrimage-webp:4.0.32"
 
-	implementation 'com.twelvemonkeys.imageio:imageio-webp:3.8.1'
+	implementation group: 'org.sejda.imageio', name: 'webp-imageio', version: '0.1.6'
+
 }

@@ -28,7 +28,6 @@ public class GoodsImgService {
         String oriImgName = goodsImgFile.getOriginalFilename();
         String imgName = "";
         String imgUrl = "";
-        String repImgName = "";
 
         // 파일 업로드
         if (!StringUtils.isEmpty(oriImgName)) {

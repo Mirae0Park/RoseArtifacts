@@ -20,6 +20,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
@@ -76,7 +80,7 @@ public class GoodsController {
 
     @GetMapping(value = "/goods/list")
     public String goodsList(@RequestParam(name = "name", required = false) String name,
-                            @RequestParam(name = "cate", required = false) String cate, Model model){
+                            @RequestParam(name = "cate", required = false) String cate, Model model) {
 
         GoodsSearchDto goodsSearchDto = new GoodsSearchDto();
 
@@ -167,4 +171,5 @@ public class GoodsController {
         return "goods/goodsDetail";
 
     }
+
 }
