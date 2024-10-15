@@ -11,7 +11,6 @@
 <body>
 
 <div class="header">
-
     <nav class="navbar">
         <div class="hamburger-menu">
             &#9776; <!-- 햄버거 아이콘 -->
@@ -26,27 +25,25 @@
             <li><a th:href="@{/goods/list}">Goods</a></li>
             <li><a th:href="@{/contact}">Contact</a></li>
             <li><a th:href="#" sec:authorize="isAuthenticated()">Management</a></li>
-            <li></li>
         </ul>
     </nav>
 </div>
 
 <div class="sendMail">
 
-    <form th:action="@{/contact}" method="post" class="contact-form" autocomplete="off">
-        <input type="text" class="subject" name="title" placeholder="제목을 입력하세요">
+    <form th:action="@{/contact}" method="post" class="contact-form" id="contactForm" autocomplete="off">
+        <input type="text" class="subject" id="subject" name="title" placeholder="제목을 입력하세요">
 
         <div class="input-group">
-            <input type="text" class="name" name="name" placeholder="이름을 입력하세요">
-            <input type="text" class="address" name="address" placeholder="이메일 주소를 입력하세요">
+            <input type="text" class="name" id="name" name="name" placeholder="이름을 입력하세요">
+            <input type="text" class="address" id="address" name="address" placeholder="이메일 주소를 입력하세요">
         </div>
 
-        <textarea name="content" class="content" placeholder="보낼 내용을 입력하세요"></textarea>
+        <textarea name="content" class="content" id="content" placeholder="보낼 내용을 입력하세요"></textarea>
 
         <div class="button-container">
-            <button type="submit"><img src="../image/contact_button.webp"></button>
+            <button type="submit"><img src="../image/contact_button.webp" alt="Send"></button>
         </div>
-
     </form>
 </div>
 

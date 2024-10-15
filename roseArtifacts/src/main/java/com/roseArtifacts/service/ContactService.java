@@ -23,7 +23,7 @@ public class ContactService {
         message.setReplyTo(mailDto.getAddress());
 
         message.setSubject("roseArtifacts 문의 메일");
-        message.setText("이름: " + mailDto.getName() + "\n내용 : " + mailDto.getContent());
+        message.setText("이름: " + mailDto.getName() + "\n내용 : " + mailDto.getContent() + "\n이메일 주소:" + mailDto.getAddress());
 
         try {
             mailSender.send(message); // 메일 전송
