@@ -25,9 +25,11 @@
         <div class="hamburger-menu">
             &#9776; <!-- 햄버거 아이콘 -->
         </div>
+        <div class="navbar-brand-background">
+        </div>
         <div class="navbar-brand">
             <a href="/">
-                <img src="/image/logo.png" alt="Logo">
+                <img src="/image/logo.webp" alt="Logo">
             </a>
         </div>
         <ul class="navbar-menu">
@@ -48,7 +50,7 @@
                 <div class="carousel-item" th:classappend="${' ' + goods.cate}">
                     <a th:href="@{/goods/detail/} + ${goods.id}">
 
-                        <img src="/image/frame_01.png" alt="Frame" class="frame-image" loading="lazy">
+                        <img src="/image/frame_01.webp" alt="Frame" class="frame-image" loading="lazy">
                         <img th:src="${goods.imgUrl}" alt="Product 1" class="product-image" loading="lazy">
 
                         <h3>[[${goods.name}]]</h3>
@@ -63,7 +65,7 @@
 </div>
 
 <div class="box">
-    <img src="/image/mouse_cursor.png">
+    <img src="/image/mouse_cursor.webp">
 </div>
 
 <div class="curtain">

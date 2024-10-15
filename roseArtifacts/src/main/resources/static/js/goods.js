@@ -128,7 +128,7 @@ function updateCarousel(goods) {
         carouselItem.classList.add('carousel-item');
         carouselItem.innerHTML = `
             <a href="/goods/detail/${goods.id}">
-                <img src="/image/frame_01.png" alt="Frame" class="frame-image">
+                <img src="/image/frame_01.webp" alt="Frame" class="frame-image">
                 <img src="${goods.imgUrl}" alt="${goods.name}" class="product-image">
                 <h3>${goods.name}</h3>
                 <p>${goods.price.toLocaleString()} 원</p>

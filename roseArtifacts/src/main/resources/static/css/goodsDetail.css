@@ -15,7 +15,7 @@ body {
 }
 
 body {
-    background-image: url(/image/goods_list_0.png);
+    background-image: url(/image/goods_list_0.webp);
 }
 
 /* 상품 상세 페이지 레이아웃 */
@@ -47,7 +47,7 @@ body {
     top: 141px;
     left: 31px;
     width: 89%;
-    z-index: 1;
+    z-index: 2;
     /* 프레임이 이미지를 덮도록 설정 */
 }
 
@@ -81,12 +81,12 @@ body {
 
 .prev-btn {
     left: -3px;
-    z-index: 10000;
+    z-index: 1000;
 }
 
 .next-btn {
     right: 0px;
-    z-index: 10000;
+    z-index: 1000;
 }
 
 .slider-btn:hover {
@@ -131,16 +131,29 @@ body {
 .navbar-brand {
     position: absolute;
     width: 100%;
-    height: 200px;
+    height: 100px;
     padding-top: 20px;
     left: 0;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
-    z-index: 10000;
     text-align: center;
 }
 
 .navbar-brand img {
     width: 300px;
+    position: relative;
+    z-index: 10000;
+}
+
+.navbar-brand-background {
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  top: 0px;
+  left: 0;
+  padding-top: 20px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  z-index: 10;
+  text-align: center;
 }
 
 /* 햄버거 메뉴 아이콘 스타일 */
@@ -161,7 +174,7 @@ body {
     align-items: flex-end;
     right: 20px;
     padding-top: 20px;
-    z-index: 100000;
+    z-index: 1000;
     position: absolute;
     justify-content: flex-end;
     flex-direction: column;
@@ -196,7 +209,7 @@ body {
         font-size: 30px;
         color: white;
         cursor: pointer;
-        z-index: 100001;
+        z-index: 100;
         transition: color 0.3s ease;
     }
 

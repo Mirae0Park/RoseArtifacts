@@ -16,7 +16,7 @@ body {
 }
 
 body {
-    background-image: url(/image/contact.png);
+    background-image: url(/image/contact.webp);
     background-position: bottom center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -86,7 +86,7 @@ body {
 
 .sendMail {
     position: absolute;
-    background-image: url(/image/contact_letter.png);
+    background-image: url(/image/contact_letter.webp);
     display: flex;
     flex-direction: column;
     justify-content: center;

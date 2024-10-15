@@ -9,7 +9,7 @@
                sec:authorize="isAuthenticated()">
         <nav class="navbar">
             <div class="navbar-logo">
-                <a th:href="@{/member/login}" sec:authorize="!isAuthenticated()"><img src="/image/person_icon.png" /></a> <!-- 왼쪽 상단 admin page 링크 -->
+                <a th:href="@{/member/login}" sec:authorize="!isAuthenticated()"><img src="/image/person_icon.webp" /></a> <!-- 왼쪽 상단 admin page 링크 -->
 
                 <a th:href="@{/member/logout}" sec:authorize="isAuthenticated()">Logout</a>
             </div>
